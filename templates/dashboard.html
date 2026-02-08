@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Manager Dashboard - CS Support{% endblock %}
+{% block content %}
+<h1>Manager Dashboard</h1>
+
+<div class="stats-cards">
+    <div class="stat-card">
+        <div class="stat-value" id="total-queries">0</div>
+        <div class="stat-label">Total Queries</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" id="active-reps">0</div>
+        <div class="stat-label">Active Reps</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" id="avg-confidence">0%</div>
+        <div class="stat-label">Avg Confidence</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" id="avg-time">0s</div>
+        <div class="stat-label">Avg Response Time</div>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <div class="dashboard-panel">
+        <h2>Rep Activity</h2>
+        <table class="data-table" id="rep-table">
+            <thead>
+                <tr>
+                    <th>Rep ID</th>
+                    <th>Queries</th>
+                    <th>Avg Confidence</th>
+                    <th>Top Topic</th>
+                    <th>Last Active</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p id="rep-empty" class="empty-msg">No data yet</p>
+    </div>
+
+    <div class="dashboard-panel">
+        <h2>Confidence Distribution</h2>
+        <div id="confidence-dist" class="bar-chart"></div>
+    </div>
+
+    <div class="dashboard-panel">
+        <h2>Most Used Documents</h2>
+        <div id="top-docs" class="bar-chart"></div>
+    </div>
+
+    <div class="dashboard-panel">
+        <h2>Queries by Topic</h2>
+        <div id="intent-breakdown" class="bar-chart"></div>
+    </div>
+</div>
+
+<div class="dashboard-panel full-width">
+    <h2>Low Confidence Queries</h2>
+    <table class="data-table" id="low-conf-table">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Confidence</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <p id="low-conf-empty" class="empty-msg">No low confidence queries</p>
+</div>
+
+<div class="refresh-info">Auto-refreshes every 30 seconds</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/dashboard.js"></script>
+{% endblock %}

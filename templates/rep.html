@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Rep View - CS Support{% endblock %}
+{% block content %}
+<h1>Customer Service Support</h1>
+<div class="query-section">
+    <div class="form-group">
+        <label for="rep-id">Representative</label>
+        <select id="rep-id">
+            <option value="REP-001">REP-001 (Alice)</option>
+            <option value="REP-002">REP-002 (Bob)</option>
+            <option value="REP-003">REP-003 (Carol)</option>
+            <option value="REP-004">REP-004 (David)</option>
+            <option value="REP-005">REP-005 (Eve)</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="question">Customer Question</label>
+        <textarea id="question" rows="4" placeholder="Type the customer's question here..."></textarea>
+    </div>
+    <button id="submit-btn" onclick="submitQuery()">Get Answer</button>
+</div>
+
+<div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <p>Processing through 3-agent pipeline...</p>
+</div>
+
+<div id="result" class="result-card hidden">
+    <div class="result-header">
+        <h2>Answer</h2>
+        <span id="confidence-badge" class="confidence-badge"></span>
+    </div>
+
+    <div class="result-section">
+        <h3>Reformulated Query</h3>
+        <p id="reformulated-query" class="reformulated"></p>
+        <span id="intent-tag" class="intent-tag"></span>
+    </div>
+
+    <div class="result-section">
+        <h3>Answer</h3>
+        <div id="answer-text" class="answer-text"></div>
+    </div>
+
+    <div class="result-section">
+        <h3>Sources</h3>
+        <div id="sources" class="sources"></div>
+    </div>
+
+    <div class="result-section">
+        <h3>Validation Notes</h3>
+        <p id="validation-notes" class="validation-notes"></p>
+    </div>
+
+    <div class="result-meta">
+        <span id="time-info"></span>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/rep.js"></script>
+{% endblock %}
